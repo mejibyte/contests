@@ -64,8 +64,8 @@ class SubmissionFetcher
     puts ""
     puts "Trying to create submission with attributes: #{attr.inspect}..."
     
-    if attr[:verdict] == "Sent to judge"
-      puts "Discarding because verdict is 'Sent to judge'."
+    if attr[:verdict] == "Sent to judge" or attr[:verdict] == "In judge queue"
+      puts "Discarding because verdict is '#{attr[:verdict]}'."
       return
     end
     
@@ -94,6 +94,12 @@ class SubmissionFetcher
     team = Team.find_by_username(username)
     if team.blank?
       puts "Discarding because there's no team with username '#{username}'."
+      return
+    end
+    
+    if attr[:verdict].blank?
+      puts "Discarding because the verdict is blank"
+      return
     end
     
     submission = contest.submissions.create!(:problem => problem, :team => team, :verdict => attr[:verdict],
