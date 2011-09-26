@@ -1,13 +1,11 @@
 class Contest < ActiveRecord::Base
   has_and_belongs_to_many :teams
-  has_many :problems, :dependent => :destroy
+  has_and_belongs_to_many :problems
   has_many :submissions, :dependent => :destroy
-  
+
   validates :name, :start_date, :end_date, :presence => true
   validate :start_date_must_be_before_end_date
-  
-  accepts_nested_attributes_for :problems, :reject_if => proc { |attr| attr["number"].blank? and attr["judge_url"].blank? }, :allow_destroy => :true
-  
+
   def teams_attributes=(attributes)
     attributes.reject! do |index, team_attributes|
       team_attributes["username"].blank? or ActiveRecord::ConnectionAdapters::Column.value_to_boolean(team_attributes.delete("_destroy"))
@@ -15,6 +13,16 @@ class Contest < ActiveRecord::Base
     self.teams = []
     self.teams = attributes.collect do |index, team_attributes|
       Team.where(:username => team_attributes["username"]).first || Team.new(team_attributes)
+    end
+  end
+  
+  def problems_attributes=(attributes)
+    attributes.reject! do |index, problem_attributes|
+      problem_attributes["number"].blank? and problem_attributes["judge_url"].blank? or ActiveRecord::ConnectionAdapters::Column.value_to_boolean(problem_attributes.delete("_destroy"))
+    end
+    self.problems = []
+    self.problems = attributes.collect do |index, problem_attributes|
+      Problem.where(:number => problem_attributes["number"]).first || Problem.new(problem_attributes)
     end
   end
   
