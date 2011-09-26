@@ -75,6 +75,10 @@ class Contest < ActiveRecord::Base
     return '~'
   end
   
+  def within_contest_time_lapse?(some_time)
+    start_date <= some_time and some_time <= end_date
+  end
+  
   protected
   
   def start_date_must_be_before_end_date

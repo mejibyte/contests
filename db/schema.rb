@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110926022750) do
+ActiveRecord::Schema.define(:version => 20110926035830) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20110926022750) do
     t.integer  "problem_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "judge_identifier"
   end
 
   create_table "teams", :force => true do |t|

@@ -5,7 +5,7 @@ class ContestsController < ApplicationController
 
   def show
     @contest = Contest.find(params[:id])
-    @submissions = @contest.submissions.limit(10)
+    @submissions = @contest.submissions.order("submitted_at desc").limit(10)
   end
 
   def new
