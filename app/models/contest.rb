@@ -23,9 +23,13 @@ class Contest < ActiveRecord::Base
   def finished?
     Time.now > end_date
   end
-  
+
   def time_to_start
     (start_date - Time.now) / 60
+  end
+  
+  def teams_sorted_by_score
+    teams.all.sort_by { |team| [1, 1] }
   end
   
   protected

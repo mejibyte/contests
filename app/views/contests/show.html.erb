@@ -14,6 +14,35 @@
   <%= l @contest.end_date, :format => :long %>
 </p>
 
+<div>
+  <table>
+    <tr>
+      <th>Rank</th>
+      <th>Team</th>
+      <% @contest.problems.each_with_index do |problem, i| %>
+        <th>
+          <% if @contest.running? or @contest.finished? %>
+            <%= link_to ("A".ord + i).chr, problem.judge_url %>
+          <% else %>
+            <%= ("A".ord + i).chr %>
+          <% end %>
+        </th>
+      <% end %>
+    </tr>
+    
+    <% @contest.teams_sorted_by_score.each_with_index do |team, i| %>
+      <tr>
+        <td><%= i + 1 %></td>
+        <td><%= team.username %></td>
+        <% @contest.problems.each do |problem| %>
+          <td>--/--</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
 <p>
   <%= link_to "Edit", edit_contest_path(@contest) %> |
   <%= link_to "Destroy", @contest, :confirm => 'Are you sure?', :method => :delete %> |
