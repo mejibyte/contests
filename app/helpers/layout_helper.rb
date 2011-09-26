@@ -19,4 +19,8 @@ module LayoutHelper
   def javascript(*args)
     content_for(:head) { javascript_include_tag(*args) }
   end
+  
+  def refresh_in_seconds(some_seconds)
+    content_for(:head) { "<meta http-equiv='refresh' content='#{some_seconds}'>".html_safe }
+  end
 end
