@@ -1,4 +1,4 @@
 class Team < ActiveRecord::Base
-  belongs_to :contest
-  validates_presence_of :username
+  validate :username, :presence => true, :unique => true
+  has_and_belongs_to_many :contests
 end
