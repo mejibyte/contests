@@ -10,4 +10,8 @@ class Submission < ActiveRecord::Base
   validates_presence_of :team_id
   validates_presence_of :contest_id
   validates_presence_of :problem_id
+  
+  def accepted?
+    verdict == "Accepted"
+  end
 end

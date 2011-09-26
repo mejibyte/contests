@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>Team</th>
+    <th>Problem</th>
+    <th>Verdict</th>
+    <th>Language</th>
+    <th>Run Time</th>
+    <th>Submitted At</th>
+  </tr>
+  <% for submission in @submissions %>
+    <tr>
+      <td><%= submission.team.username %></td>
+      <td><%= link_to "#{submission.contest.letter_for_problem(submission.problem)} - #{submission.problem.number}", submission.problem.judge_url %></td>
+      <td class="<%= submission.accepted? ? "green" : "red" %>"><%= submission.verdict %></td>
+      <td><%= submission.language %></td>
+      <td><%= submission.run_time %></td>
+      <td><%= submission.submitted_at %></td>
+    </tr>
+  <% end %>
+</table>

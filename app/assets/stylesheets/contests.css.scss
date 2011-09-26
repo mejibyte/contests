@@ -1,9 +1,26 @@
 .fields {
 }
 
-table {
+table, th, td {
   text-align: center;
+  border-width: 1px;
+  border-spacing: 2px;
+  border-color: gray;
+  border-collapse: separate;
+  border-style: outset;
+}
+
+table {
   th, td {
     padding: 4px 8px;
+    border-style: inset;
   }
+}
+
+.red {
+  background: #F75D59;
+}
+
+.green {
+  background: #00FF33;
 }

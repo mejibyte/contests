@@ -25,4 +25,14 @@ module ContestsHelper
       t == 0 ? "--" : t
     end
   end
+  
+  def class_for_problem(team, problem)
+    if @contest.problem_solved?(team, problem)
+      "green"
+    elsif @contest.wrong_tries_before_solution(team, problem) > 0
+       "red"
+    else
+      "normal"
+    end
+  end
 end

@@ -68,6 +68,13 @@ class Contest < ActiveRecord::Base
     problems.inject(0) { |sum, problem| sum + penalty_for_single_problem(team, problem) }
   end
   
+  def letter_for_problem(problem)
+    problems.each_with_index do |p, i|
+      return ('A'.ord + i).chr if p == problem
+    end
+    return '~'
+  end
+  
   protected
   
   def start_date_must_be_before_end_date

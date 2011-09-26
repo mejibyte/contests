@@ -1,10 +1,9 @@
 Contests::Application.routes.draw do
-  resources :submissions
-
   resources :problems
-
   resources :teams
-
-  resources :contests
+  
+  resources :contests do
+      resources :submissions, :only => :index
+  end
   root :to => "contests#index"
 end

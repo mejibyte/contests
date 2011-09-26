@@ -5,12 +5,13 @@
     <th>Name</th>
     <th>Start Date</th>
     <th>End Date</th>
+    <th colspan="3">Controls</th>
   </tr>
   <% for contest in @contests %>
     <tr>
       <td><%= contest.name %></td>
-      <td><%= contest.start_date %></td>
-      <td><%= contest.end_date %></td>
+      <td><%= l contest.start_date, :format => :long %></td>
+      <td><%= l contest.end_date, :format => :long %></td>
       <td><%= link_to "Show", contest %></td>
       <td><%= link_to "Edit", edit_contest_path(contest) %></td>
       <td><%= link_to "Destroy", contest, :confirm => 'Are you sure?', :method => :delete %></td>

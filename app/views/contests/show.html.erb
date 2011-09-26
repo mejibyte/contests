@@ -22,9 +22,9 @@
       <% @contest.problems.each_with_index do |problem, i| %>
         <th>
           <% if @contest.running? or @contest.finished? %>
-            <%= link_to ("A".ord + i).chr + " - #{problem.number}", problem.judge_url %>
+            <%= link_to "#{@contest.letter_for_problem(problem)} - #{problem.number}", problem.judge_url %>
           <% else %>
-            <%= ("A".ord + i).chr %>
+            <%= @contest.letter_for_problem(problem) %>
           <% end %>
         </th>
       <% end %>
@@ -37,7 +37,9 @@
         <td><%= i + 1 %></td>
         <td><%= team.username %></td>
         <% @contest.problems.each do |problem| %>
-          <td><%= format_tries(team, problem) %>/<%= format_time_of_first_solution(@contest.time_of_first_solution(team, problem)) %></td>
+          <td class="<%= class_for_problem(team, problem) %>">
+            <%= format_tries(team, problem) %>/<%= format_time_of_first_solution(@contest.time_of_first_solution(team, problem)) %>
+          </td>
         <% end %>
         <td><%= @contest.number_of_solved_problems(team) %></td>
         <td><%= @contest.total_penalty(team) %></td>
@@ -46,6 +48,13 @@
   </table>
 </div>
 
+<h3>Last 10 submissions</h3>
+
+<%= render "submissions/submissions" %>
+
+<p>
+  <%= link_to "View all submissions (#{@contest.submissions.count})", contest_submissions_path(@contest) %>
+</p>
 
 <p>
   <%= link_to "Edit", edit_contest_path(@contest) %> |
