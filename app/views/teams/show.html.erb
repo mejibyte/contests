@@ -1,0 +1,16 @@
+<% title "Team" %>
+
+<p>
+  <strong>Username:</strong>
+  <%= @team.username %>
+</p>
+<p>
+  <strong>Judge Identifier:</strong>
+  <%= @team.judge_identifier %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_team_path(@team) %> |
+  <%= link_to "Destroy", @team, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", teams_path %>
+</p>

@@ -1,7 +1,10 @@
 class Contest < ActiveRecord::Base
-  attr_accessible :name, :start_date, :end_date
+  has_many :teams
+  
   validates :name, :start_date, :end_date, :presence => true
   validate :start_date_must_be_before_end_date
+  
+  accepts_nested_attributes_for :teams
   
   def duration # in minutes
     (end_date - start_date) / 60

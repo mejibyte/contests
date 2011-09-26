@@ -8,6 +8,7 @@ gem 'rails', '3.1.0'
 gem 'sqlite3'
 
 gem 'nifty-generators'
+gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
 
 # Gems used only for assets and not required
 # in production environments by default.

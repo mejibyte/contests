@@ -9,6 +9,7 @@ class ContestsController < ApplicationController
 
   def new
     @contest = Contest.new
+    3.times { @contest.teams.build }
   end
 
   def create

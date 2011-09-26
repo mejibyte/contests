@@ -1,4 +1,4 @@
-<%= form_for @contest do |f| %>
+<%= nested_form_for @contest do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :name %><br />
@@ -12,5 +12,16 @@
     <%= f.label :end_date %><br />
     <%= f.datetime_select :end_date %>
   </p>
+  
+  <h3>Teams</h3>
+  <%= f.fields_for :teams do |team_form| %>
+    <p>
+      <%= team_form.label :username %><br />
+      <%= team_form.text_field :username %>
+      <%= team_form.link_to_remove "Remove this team" %>
+    </p>
+  <% end %>
+  <p><%= f.link_to_add "Add another team", :teams %></p>
+  
   <p><%= f.submit %></p>
 <% end %>

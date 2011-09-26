@@ -1,0 +1,7 @@
+one:
+  username: MyString
+  judge_identifier: MyString
+
+two:
+  username: MyString
+  judge_identifier: MyString

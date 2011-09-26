@@ -1,0 +1,19 @@
+<% title "Teams" %>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Judge Identifier</th>
+  </tr>
+  <% for team in @teams %>
+    <tr>
+      <td><%= team.username %></td>
+      <td><%= team.judge_identifier %></td>
+      <td><%= link_to "Show", team %></td>
+      <td><%= link_to "Edit", edit_team_path(team) %></td>
+      <td><%= link_to "Destroy", team, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Team", new_team_path %></p>
