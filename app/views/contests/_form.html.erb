@@ -12,6 +12,22 @@
     <%= f.label :end_date %><br />
     <%= f.datetime_select :end_date %>
   </p>
+
+  <h3>Problems</h3>
+  <%= f.fields_for :problems do |problem_form| %>
+    <p>
+      <%= problem_form.label :number %><br />
+      <%= problem_form.text_field :number %><br />
+
+      <%= problem_form.label :judge_url, "Judge URL" %><br />
+      <%= problem_form.text_field :judge_url %><br />
+      
+      
+      <%= problem_form.link_to_remove "Remove this problem" %>
+    </p>
+  <% end %>
+  <p><%= f.link_to_add "Add another problem", :problems %></p>
+
   
   <h3>Teams</h3>
   <%= f.fields_for :teams do |team_form| %>
