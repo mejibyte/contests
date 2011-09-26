@@ -1,0 +1,19 @@
+<% title "Submissions" %>
+
+<table>
+  <tr>
+    <th>Verdict</th>
+    <th>Language</th>
+    <th>Run Time</th>
+    <th>Submitted At</th>
+  </tr>
+  <% for submission in @submissions %>
+    <tr>
+      <td><%= submission.verdict %></td>
+      <td><%= submission.language %></td>
+      <td><%= submission.run_time %></td>
+      <td><%= submission.submitted_at %></td>
+    </tr>
+  <% end %>
+</table>
+

@@ -12,4 +12,17 @@ module ContestsHelper
       "Contest starts in " + format_time(contest.time_to_start)
     end
   end
+  
+  def format_time_of_first_solution(time)
+    time.blank? ? "--" : time.round
+  end
+  
+  def format_tries(team, problem)
+    if @contest.problem_solved?(team, problem)
+      @contest.wrong_tries_before_solution(team, problem) + 1
+    else
+      t = @contest.wrong_tries_before_solution(team, problem)
+      t == 0 ? "--" : t
+    end
+  end
 end
