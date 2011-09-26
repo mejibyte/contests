@@ -1,0 +1,20 @@
+<% title "Contest" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contest.name %>
+</p>
+<p>
+  <strong>Start Date:</strong>
+  <%= @contest.start_date %>
+</p>
+<p>
+  <strong>End Date:</strong>
+  <%= @contest.end_date %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_contest_path(@contest) %> |
+  <%= link_to "Destroy", @contest, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", contests_path %>
+</p>

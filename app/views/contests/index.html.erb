@@ -1,0 +1,21 @@
+<% title "Contests" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+  <% for contest in @contests %>
+    <tr>
+      <td><%= contest.name %></td>
+      <td><%= contest.start_date %></td>
+      <td><%= contest.end_date %></td>
+      <td><%= link_to "Show", contest %></td>
+      <td><%= link_to "Edit", edit_contest_path(contest) %></td>
+      <td><%= link_to "Destroy", contest, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Contest", new_contest_path %></p>
