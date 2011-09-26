@@ -1,4 +1,6 @@
 class Team < ActiveRecord::Base
-  validate :username, :presence => true, :unique => true
   has_and_belongs_to_many :contests
+  has_many :submissions, :dependent => :destroy
+  
+  validate :username, :presence => true, :unique => true
 end
