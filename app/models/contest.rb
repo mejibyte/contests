@@ -3,6 +3,26 @@ class Contest < ActiveRecord::Base
   validates :name, :start_date, :end_date, :presence => true
   validate :start_date_must_be_before_end_date
   
+  def duration # in minutes
+    (end_date - start_date) / 60
+  end
+  
+  def time_left
+    (end_date - Time.now) / 60
+  end
+  
+  def running?
+    start_date <= Time.now and Time.now <= end_date
+  end
+  
+  def finished?
+    Time.now > end_date
+  end
+  
+  def time_to_start
+    (start_date - Time.now) / 60
+  end
+  
   protected
   
   def start_date_must_be_before_end_date

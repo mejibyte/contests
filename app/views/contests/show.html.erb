@@ -1,16 +1,17 @@
-<% title "Contest" %>
+<% title "Contest: #{@contest.name}" %>
+
+<div>
+  <span><b>Duration:</b> <%= format_time(@contest.duration) %></span>
+  <span><b>Time left:</b> <%= format_time_left(@contest) %></span>
+</div>
 
 <p>
-  <strong>Name:</strong>
-  <%= @contest.name %>
-</p>
-<p>
   <strong>Start Date:</strong>
-  <%= @contest.start_date %>
+  <%= l @contest.start_date, :format => :long %>
 </p>
 <p>
   <strong>End Date:</strong>
-  <%= @contest.end_date %>
+  <%= l @contest.end_date, :format => :long %>
 </p>
 
 <p>
