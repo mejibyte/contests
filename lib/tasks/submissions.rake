@@ -81,13 +81,6 @@ class SubmissionFetcher
       return
     end
     
-    attr[:submitted_at] = Time.parse(attr[:submitted_at] + " GMT")
-    contest = problem.contest
-    if !contest.within_contest_time_lapse?(attr[:submitted_at])
-      puts "Discarding because the submission is outside the contest time lapse. Contest time lapse is [#{contest.start_date}, #{contest.end_date}] but submission time is #{attr[:submitted_at]}."
-      return
-    end
-    
     username = extract_username(attr[:user_url])
     puts "Username is #{username}..."
     
@@ -101,12 +94,20 @@ class SubmissionFetcher
       puts "Discarding because the verdict is blank"
       return
     end
+        
+    attr[:submitted_at] = Time.parse(attr[:submitted_at] + " GMT")
     
-    submission = contest.submissions.create!(:problem => problem, :team => team, :verdict => attr[:verdict],
-                                             :language => attr[:language], :run_time => attr[:run_time],
-                                             :submitted_at => attr[:submitted_at], :judge_identifier => attr[:judge_identifier])
-    
-    puts "Successfully created submission with ID=#{submission.to_param}!"
+    problem.contests.each do |contest|
+      if !contest.within_contest_time_lapse?(attr[:submitted_at])
+        puts "Discarding because the submission is outside the contest time lapse. Contest time lapse is [#{contest.start_date}, #{contest.end_date}] but submission time is #{attr[:submitted_at]}."
+        next
+      end
+      submission = contest.submissions.create!(:problem => problem, :team => team, :verdict => attr[:verdict],
+                                               :language => attr[:language], :run_time => attr[:run_time],
+                                               :submitted_at => attr[:submitted_at], :judge_identifier => attr[:judge_identifier])
+
+      puts "Successfully created submission with ID=#{submission.to_param}!"
+    end
   end
   
   def extract_username(user_url)
