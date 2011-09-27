@@ -31,7 +31,7 @@
       <% @contest.problems.each_with_index do |problem, i| %>
         <th>
           <% if @contest.running? or @contest.finished? %>
-            <%= link_to "#{@contest.letter_for_problem(problem)} - #{problem.number}", problem.judge_url %>
+            <%= link_to "#{@contest.letter_for_problem(problem)} - #{problem.number}", problem.judge_url, :target => "_blank" %>
           <% else %>
             <%= @contest.letter_for_problem(problem) %>
           <% end %>

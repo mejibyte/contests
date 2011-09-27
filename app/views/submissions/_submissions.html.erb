@@ -10,7 +10,7 @@
   <% for submission in @submissions %>
     <tr>
       <td><%= submission.team.username %></td>
-      <td><%= link_to "#{submission.contest.letter_for_problem(submission.problem)} - #{submission.problem.number}", submission.problem.judge_url %></td>
+      <td><%= link_to "#{submission.contest.letter_for_problem(submission.problem)} - #{submission.problem.number}", submission.problem.judge_url, :target => "_blank" %></td>
       <td class="<%= submission.accepted? ? "green" : "red" %>"><%= submission.verdict %></td>
       <td><%= submission.language %></td>
       <td><%= submission.run_time %></td>
