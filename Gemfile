@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'nifty-generators'
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
 gem 'mechanize'
+gem 'cancan'
 
 # Gems used only for assets and not required
 # in production environments by default.

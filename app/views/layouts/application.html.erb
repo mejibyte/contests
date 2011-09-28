@@ -9,9 +9,14 @@
   </head>
   <body>
     <div id="container">
+      <% if current_user %>
+        <div>You are currently logged in. <%= link_to "Log out.", session_path, :method => :delete %></div>
+      <% end %>
+
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
+
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
     </div>

@@ -1,0 +1,12 @@
+<% title "Log in" %>
+
+<p>
+  Please enter the master password to make changes.
+</p>
+
+<p>
+  <%= form_for :session, :url => session_url, :method => :post do |f| %>
+    <b><%= f.label :password, "Password:" %></b>
+    <%= f.password_field :password %>
+  <% end %>
+</p>
