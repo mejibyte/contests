@@ -13,8 +13,8 @@ set :keep_releases, 30
 
 
 set :scm, "git"
-set :repository, "git@github.com:andmej/andr.esmejia.git"
-set :branch, "rails3"
+set :repository, "git@github.com:andmej/contests.git"
+set :branch, "master"
 
 require 'bundler/capistrano'
 
