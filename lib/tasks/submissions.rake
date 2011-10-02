@@ -24,7 +24,8 @@ class SubmissionFetcher
         sleep 60
       rescue => e
         puts "Holy Macaroni! And exception was raised: #{e}"
-        puts "Retrying now, anyway."
+        puts "Retrying in 5 seconds, anyway."
+        sleep 5
       end
     end
   end
