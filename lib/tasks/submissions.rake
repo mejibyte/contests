@@ -17,17 +17,23 @@ class SubmissionFetcher
   SUBMISSIONS_URL = DOMAIN + "index.php?option=com_onlinejudge&Itemid=19"
   
   def daemon
+    puts "#{timestamp} Starting daemon to fetch submissions..."
+    STDERR.puts "#{timestamp} Starting daemon to fetch submissions..."
     while true
       begin
         fetch
-        puts "Sleeping 60 seconds before retrying..."
+        puts "#{timestamp} Sleeping 60 seconds before retrying..."
         sleep 60
       rescue => e
-        puts "Holy Macaroni! And exception was raised: #{e}"
-        puts "Retrying in 5 seconds, anyway."
+        puts "#{timestamp} Holy Macaroni! And exception was raised: #{e}"
+        puts "#{timestamp} Retrying in 5 seconds, anyway."
         sleep 5
       end
     end
+  end
+  
+  def timestamp
+    "[#{Time.now}]"
   end
   
   def fetch
