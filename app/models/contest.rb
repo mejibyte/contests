@@ -6,6 +6,8 @@ class Contest < ActiveRecord::Base
   validates :name, :start_date, :end_date, :presence => true
   validate :start_date_must_be_before_end_date
 
+  scope :running, lambda { where("start_date <= ? AND ? <= end_date", Time.now, Time.now) }
+
   def teams_attributes=(attributes)
     attributes.reject! do |index, team_attributes|
       team_attributes["username"].blank? or ActiveRecord::ConnectionAdapters::Column.value_to_boolean(team_attributes.delete("_destroy"))

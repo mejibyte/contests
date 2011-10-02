@@ -81,6 +81,18 @@ class SubmissionFetcher
       puts "Discarding because there's no problem with number '#{attr[:number]}'."
       return
     end
+        
+    if attr[:verdict].blank?
+      puts "Discarding because the verdict is blank"
+      return
+    end
+        
+    attr[:submitted_at] = Time.parse(attr[:submitted_at] + " GMT")
+    
+    unless problem.belongs_to_at_least_one_running_contest?
+      puts "Discarding because problem #{attr[:number]} - #{attr[:problem_name]} is not being used in any currently running contest."
+      return
+    end
     
     username = extract_username(attr[:user_url])
     puts "Username is #{username}..."
@@ -89,14 +101,7 @@ class SubmissionFetcher
     if team.blank?
       puts "Discarding because there's no team with username '#{username}'."
       return
-    end
-    
-    if attr[:verdict].blank?
-      puts "Discarding because the verdict is blank"
-      return
-    end
-        
-    attr[:submitted_at] = Time.parse(attr[:submitted_at] + " GMT")
+    end    
     
     problem.contests.each do |contest|
       if !contest.within_contest_time_lapse?(attr[:submitted_at])
