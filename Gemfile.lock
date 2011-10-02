@@ -162,7 +162,7 @@ DEPENDENCIES
   nested_form!
   nifty-generators
   rails (= 3.1.0)
-  sass-rails (~> 3.1.0)
+  sass-rails
   sqlite3
   turn
   uglifier
