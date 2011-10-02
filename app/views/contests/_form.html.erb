@@ -20,7 +20,7 @@
       <%= problem_form.text_field :number %><br />
 
       <%= problem_form.label :judge_url, "Judge URL" %><br />
-      <%= problem_form.text_area :judge_url %><br />
+      <%= problem_form.text_area :judge_url, :cols => 120, :rows => 2 %><br />
       
       
       <%= problem_form.link_to_remove "Remove this problem" %>
