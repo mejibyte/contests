@@ -80,6 +80,7 @@ GEM
     mocha (0.10.0)
       metaclass (~> 0.0.1)
     multi_json (1.0.3)
+    mysql2 (0.3.7)
     net-http-digest_auth (1.1.1)
     net-http-persistent (1.9)
     net-scp (1.0.4)
@@ -157,6 +158,7 @@ DEPENDENCIES
   jquery-rails
   mechanize
   mocha
+  mysql2
   nested_form!
   nifty-generators
   rails (= 3.1.0)

@@ -5,8 +5,6 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 gem 'nifty-generators'
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
 gem 'mechanize'
@@ -37,5 +35,13 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'mocha'
 end
-gem "mocha", :group => :test
+
+group :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'mysql2'
+end
