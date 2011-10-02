@@ -11,6 +11,9 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 set :keep_releases, 30
 
+# This modifies timestamps of files in /public/stylesheets, /public/images and /public/javascripts.
+# We don't need it because we are using Rails' asset pipeline.
+set :normalize_asset_timestamps, false
 
 set :scm, "git"
 set :repository, "git@github.com:andmej/contests.git"
