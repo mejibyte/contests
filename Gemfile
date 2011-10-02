@@ -12,6 +12,8 @@ gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
 gem 'mechanize'
 gem 'cancan'
 gem 'foreman'
+gem 'capistrano'
+gem 'yaml_db'
 
 # Gems used only for assets and not required
 # in production environments by default.
