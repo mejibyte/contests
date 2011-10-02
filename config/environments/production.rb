@@ -17,8 +17,8 @@ Contests::Application.configure do
   # Fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = true
 
-  # Do not generate digests for assets URLs
-  config.assets.digest = false
+  # Do generate digests for assets URLs
+  config.assets.digest = true
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
