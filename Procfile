@@ -1,0 +1,1 @@
+submissions_fetcher: bundle exec rake submissions:fetch:daemon
