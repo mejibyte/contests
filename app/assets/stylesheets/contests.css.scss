@@ -24,3 +24,18 @@ table {
 .green {
   background: #00FF33;
 }
+
+.finished {
+  font-weight: bold;
+  color: #888;
+}
+
+.running {
+  font-weight: bold;
+  color: #00AA00;
+}
+
+.upcoming {
+  font-weight: bold;
+  color: #FF9900;
+}

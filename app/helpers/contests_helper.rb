@@ -35,4 +35,15 @@ module ContestsHelper
       "normal"
     end
   end
+  
+  def contest_status(contest)
+    css_class, text = if contest.running?
+      ["running", "Running"]
+    elsif contest.finished?
+      ["finished", "Finished"]
+    else
+      ["upcoming", "Upcoming"]
+    end
+    content_tag(:span, text, :class => css_class)
+  end
 end

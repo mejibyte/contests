@@ -2,6 +2,7 @@ class ContestsController < ApplicationController
   load_and_authorize_resource
   
   def index
+    @contests = @contests.order("start_date desc")
   end
 
   def show
