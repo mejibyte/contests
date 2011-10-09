@@ -11,7 +11,8 @@ class Submission < ActiveRecord::Base
   validates_presence_of :contest_id
   validates_presence_of :problem_id
   validates_presence_of :judge_identifier
-  validates_uniqueness_of :judge_identifier
+  # Never count a submission twice on the same contest, but do count it in different contests.
+  validates_uniqueness_of :judge_identifier, :scope => [ :contest_id ]
   
   def accepted?
     verdict == "Accepted"

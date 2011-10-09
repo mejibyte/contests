@@ -71,7 +71,7 @@ class SubmissionFetcher
     puts ""
     puts "Trying to create submission with attributes: #{attr.inspect}..."
     
-    if attr[:verdict] == "Sent to judge" or attr[:verdict] == "In judge queue"
+    if ["Sent to judge", "Compiling", "In judge queue", "Running", "Linking"].include?(attr[:verdict])
       puts "Discarding because verdict is '#{attr[:verdict]}'."
       return
     end
