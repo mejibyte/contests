@@ -64,3 +64,21 @@
 <p>
   <%= link_to "View all submissions (#{@contest.submissions.count})", contest_submissions_path(@contest) %>
 </p>
+
+
+<h3>Discussion</h3>
+
+<div>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'contests-factorcomun';
+      var disqus_title = '<%= escape_javascript @contest.name %>';
+      var disqus_identifier = 'contest_<%= @contest.id %>';
+      var disqus_url = '<%= escape_javascript contest_url(@contest) %>';
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+</div>
