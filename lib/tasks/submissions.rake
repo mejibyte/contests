@@ -21,8 +21,8 @@ class SubmissionFetcher
     STDERR.puts "#{timestamp} Starting daemon to fetch submissions..."
     while true
       begin
-        uva.fetch
         live_archive.fetch
+        uva.fetch
         puts "#{timestamp} Sleeping 60 seconds before retrying..."
         sleep 60
       rescue => e
