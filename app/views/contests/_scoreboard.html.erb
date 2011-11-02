@@ -1,0 +1,31 @@
+<table border="1">
+  <tr>
+    <th>Rank</th>
+    <th>Team</th>
+    <% @contest.problems.each_with_index do |problem, i| %>
+      <th>
+        <% if @contest.running? or @contest.finished? %>
+          <%= link_to "#{@contest.letter_for_problem(problem)} - #{problem.number}", problem.judge_url, :target => "_blank" %>
+        <% else %>
+          <%= @contest.letter_for_problem(problem) %>
+        <% end %>
+      </th>
+    <% end %>
+    <th>Solved</th>
+    <th>Penalty</th>
+  </tr>
+  
+  <% @contest.teams_sorted_by_score.each_with_index do |team, i| %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= team.username %></td>
+      <% @contest.problems.each do |problem| %>
+        <td class="<%= class_for_problem(team, problem) %>">
+          <%= format_tries(team, problem) %>/<%= format_time_of_first_solution(@contest.time_of_first_solution(team, problem)) %>
+        </td>
+      <% end %>
+      <td><%= @contest.number_of_solved_problems(team) %></td>
+      <td><%= @contest.total_penalty(team) %></td>
+    </tr>
+  <% end %>
+</table>
