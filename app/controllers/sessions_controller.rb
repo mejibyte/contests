@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
   
   def create
     authorize! :create, :session
-    if Digest::SHA1.hexdigest(params[:session][:password]) == "ab87d24bdc7452e55738deb5f868e1f16dea5ace"
+    salt = "d40b3f20aca34409c09f24dd0a2a490801ac0ef310043ec8b25c6c9a842bbd054cc49da232d3819b"
+    if Digest::SHA1.hexdigest(params[:session][:password] + salt) == "029acabaa8aba965221b3f3ff0c1c50029abbe26"
       session[:admin] = true
       redirect_to root_url, :notice => "Welcome in, beautiful person!"
     else
