@@ -1,14 +1,14 @@
 <% title "Contest: #{@contest.name}" %>
 
-<% if logged_in? %>
-    <div>
-      <p>
-        <%= link_to "Edit this contest", edit_contest_path(@contest) %> |
-        <%= link_to "Destroy this contest", @contest, :confirm => 'Are you sure?', :method => :delete %> |
-        <%= link_to "View all contests", contests_path %>
-      </p>
-    </div>
-<% end %>
+<div>
+  <p>
+  <% if logged_in? %>
+    <%= link_to "Edit this contest", edit_contest_path(@contest) %> |
+    <%= link_to "Destroy this contest", @contest, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to "View all contests", contests_path %>
+  </p>
+</div>
 
 <div>
   <span><b>Duration:</b> <%= format_time(@contest.duration) %></span>
