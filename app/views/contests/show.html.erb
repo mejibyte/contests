@@ -2,10 +2,8 @@
 
 <div>
   <p>
-  <% if logged_in? %>
-    <%= link_to "Edit this contest", edit_contest_path(@contest) %> |
-    <%= link_to "Destroy this contest", @contest, :confirm => 'Are you sure?', :method => :delete %> |
-  <% end %>
+  <%= link_to "Edit this contest", edit_contest_path(@contest) %> |
+  <%= link_to "Destroy this contest", @contest, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View all contests", contests_path %>
   </p>
 </div>
