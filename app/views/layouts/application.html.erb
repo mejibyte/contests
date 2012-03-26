@@ -12,8 +12,6 @@
         <div>
       <% if current_user %>
         You are currently logged in. <%= link_to "Log out.", session_path, :method => :delete %>
-      <% else %>
-        <%= link_to "Log in", new_session_path %> to make changes.
       <% end %>
 
       <% flash.each do |name, msg| %>
