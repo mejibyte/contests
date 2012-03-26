@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   rescue_from CanCan::AccessDenied do |exception|
+    session[:return_to] = request.path
     redirect_to new_session_url, :alert => exception.message
   end
   
