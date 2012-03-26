@@ -6,17 +6,18 @@
     <th>Start Date</th>
     <th>End Date</th>
     <th>Status</th>
-    <th colspan="3">Controls</th>
   </tr>
   <% for contest in @contests %>
     <tr>
-      <td><%= contest.name %></td>
+      <td><%= link_to contest.name, contest %></td>
       <td><%= l contest.start_date, :format => :long %></td>
       <td><%= l contest.end_date, :format => :long %></td>
       <td><%= contest_status(contest) %></td>
-      <td><%= link_to "Show", contest %></td>
-      <td><%= link_to "Edit", edit_contest_path(contest) %></td>
-      <td><%= link_to "Destroy", contest, :confirm => 'Are you sure?', :method => :delete %></td>
+      
+      <% if logged_in? %>
+          <td><%= link_to "Edit", edit_contest_path(contest) %></td>
+          <td><%= link_to "Destroy", contest, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

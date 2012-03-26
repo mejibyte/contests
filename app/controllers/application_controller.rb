@@ -6,9 +6,14 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url, :alert => exception.message
   end
   
-  helper_method :current_user
+  helper_method :current_user, :logged_in?
   
   def current_user
     session[:admin]
   end
+  
+  def logged_in?
+    current_user.present?
+  end
+  
 end
