@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     can :read, :all
     can :manage, :session
-    can :create, :team
+    can :create, Team
 
     if user.present?
       can :manage, :all
