@@ -28,6 +28,10 @@ class Contest < ActiveRecord::Base
     end
   end
   
+  def add_team!(some_team)
+    teams << some_team unless teams.include?(some_team)
+  end
+  
   def duration # in minutes
     (end_date - start_date) / 60
   end

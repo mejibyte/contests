@@ -1,0 +1,13 @@
+<% title "Add team to #{@contest.name}" %>
+
+<%= form_for [@contest, @team] do |f| %>
+    <%= f.error_messages %>
+    
+    <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+    </div>
+    
+    <%= f.submit "Add team" %>
+    
+<% end %>

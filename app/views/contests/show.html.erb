@@ -28,6 +28,12 @@
   <%= render "scoreboard" %>
 </div>
 
+<% unless @contest.finished? %>
+    <p>
+        <%= link_to "Add new team", new_contest_team_path(@contest) %>
+    </p>
+<% end %>
+
 <h3>Last 10 submissions</h3>
 
 <%= render "submissions/submissions" %>
