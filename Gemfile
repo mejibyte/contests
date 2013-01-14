@@ -13,6 +13,7 @@ gem 'mechanize'
 gem 'cancan'
 gem 'foreman'
 gem 'capistrano'
+gem 'rvm-capistrano'
 gem 'yaml_db'
 
 group :test do
